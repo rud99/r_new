@@ -17,7 +17,6 @@ class ImagesController extends Controller
     public function index()
     {
         $images = $this->images->all();
-
         return view('welcome', ['imagesInView' => $images]);
     }
 
@@ -29,7 +28,8 @@ class ImagesController extends Controller
     public function store(Request $request)
     {
         $filename = $request->file('image');
-        $this->images->add($filename);
+        $title = $request->input('title');
+        $this->images->add($filename, $title);
 
         return redirect('/');
     }
@@ -37,20 +37,20 @@ class ImagesController extends Controller
     public function show($id)
     {
         $myImage = $this->images->one($id);
+        $this->images->updateViews($id);
 
-        return view('show', ['imageInView' => $myImage->image]);
+        return view('show', ['imageInView' => $myImage]);
     }
 
     public function edit($id)
     {
         $image = $this->images->one($id);
-
         return view('edit', ['imageInView' => $image]);
     }
 
     public function update(Request $request, $id)
     {
-        $this->images->update($id, $request->image);
+        $this->images->update($id, $request);
 
         return redirect('/');
     }

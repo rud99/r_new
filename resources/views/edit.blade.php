@@ -8,8 +8,13 @@
                 <img src="/{{$imageInView->image}}" alt="" class="img-thumbnail">
                 <form action="/update/{{$imageInView->id}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
-                    <div class="form-control">
-                        <input type="file" name="image">
+                    <div class="form-group">
+                        <label>Image title</label>
+                        <input type="text" name="title" class="form-control" value="{{$imageInView->title   }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Select image file</label>
+                        <input type="file" name="image" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-warning my_sub_btn">Edit</button>
                 </form>

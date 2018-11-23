@@ -17,3 +17,12 @@ div.gallery-item {
     display: block;
     margin: 20px auto;
 }
+.views_count {
+    width: 100%;
+    text-align: center;
+}
+.img_title {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}

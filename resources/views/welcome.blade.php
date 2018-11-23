@@ -9,6 +9,13 @@
                     <div>
                         <img src="/{{$image->image}}" class="img-thumbnail">
                     </div>
+                    <div class="views_count">
+                        @if ($image->views > 0)
+                            Views: <b>{{$image->views}}</b>
+                        @else
+                            No views
+                        @endif
+                    </div>
                     <a href="/show/{{$image->id}}" class="btn btn-info my-button">Info</a>
                     <a href="/edit/{{$image->id}}" class="btn btn-warning my-button">Edit</a>
                     <a href="/delete/{{$image->id}}" onclick="return confirm('Удаляем?');" class="btn btn-danger my-button">Delete</a>
